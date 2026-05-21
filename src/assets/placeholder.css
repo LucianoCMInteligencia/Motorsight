@@ -1,0 +1,3 @@
+/* Placeholder styles and small utilities */
+.vehicle-image { width:100%; height:200px; object-fit:cover; }
+.card-small { min-height: 100%; }

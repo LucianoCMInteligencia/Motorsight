@@ -1,0 +1,16 @@
+{
+  "vehicles": [
+    { "id": 1, "brand": "Toyota", "model": "Corolla", "price": 15000, "year": 2018, "km": 45000, "location": "Madrid", "fuel": "Gasolina", "image": "https://picsum.photos/seed/1/800/500" },
+    { "id": 2, "brand": "Ford", "model": "Focus", "price": 13000, "year": 2016, "km": 60000, "location": "Barcelona", "fuel": "Diésel", "image": "https://picsum.photos/seed/2/800/500" },
+    { "id": 3, "brand": "Tesla", "model": "Model 3", "price": 35000, "year": 2020, "km": 20000, "location": "Valencia", "fuel": "Eléctrico", "image": "https://picsum.photos/seed/3/800/500" },
+    { "id": 4, "brand": "Renault", "model": "Clio", "price": 9000, "year": 2014, "km": 80000, "location": "Sevilla", "fuel": "Gasolina", "image": "https://picsum.photos/seed/4/800/500" },
+    { "id": 5, "brand": "BMW", "model": "320i", "price": 22000, "year": 2017, "km": 55000, "location": "Madrid", "fuel": "Gasolina", "image": "https://picsum.photos/seed/5/800/500" }
+  ],
+  "campaigns": [
+    { "id": 1, "name": "Campaña Primavera", "budget": 5000, "startDate": "2026-03-01", "endDate": "2026-05-31", "status": "active" },
+    { "id": 2, "name": "Ofertas KM0", "budget": 3000, "startDate": "2026-02-01", "endDate": "2026-04-30", "status": "paused" }
+  ],
+  "leads": [
+    { "id": 1, "name": "María Pérez", "email": "maria@example.com", "message": "Interesado en Toyota Corolla", "vehicleId": 1, "createdAt": "2026-05-10T10:00:00Z" }
+  ]
+}
