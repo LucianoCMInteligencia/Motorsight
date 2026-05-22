@@ -1,42 +1,32 @@
 <template>
-  <div class="card p-3 mb-3">
-    <h5>Métricas rápidas</h5>
-    <div class="row text-center">
-      <div class="col-4">
-        <div class="h2">{{ stats.vehicles }}</div>
-        <div class="text-muted small">Vehículos</div>
-      </div>
-      <div class="col-4">
-        <div class="h2">{{ stats.campaigns }}</div>
-        <div class="text-muted small">Campañas</div>
-      </div>
-      <div class="col-4">
-        <div class="h2">{{ stats.leads }}</div>
-        <div class="text-muted small">Leads</div>
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <h6 class="card-title">Vehículos</h6>
+          <h2>{{ stats?.vehicles || 0 }}</h2>
+        </div>
       </div>
     </div>
-    <div class="mt-3">
-      <canvas ref="chart" height="80"></canvas>
+    <div class="col-md-4">
+      <div class="card bg-success text-white">
+        <div class="card-body">
+          <h6 class="card-title">Campañas</h6>
+          <h2>{{ stats?.campaigns || 0 }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-warning text-dark">
+        <div class="card-body">
+          <h6 class="card-title">Leads</h6>
+          <h2>{{ stats?.leads || 0 }}</h2>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
-import Chart from 'chart.js/auto'
-
-const props = defineProps({ stats: Object })
-const chart = ref(null)
-
-onMounted(()=>{
-  if(!chart.value) return
-  new Chart(chart.value.getContext('2d'), {
-    type: 'doughnut',
-    data: {
-      labels: ['Vehículos','Campañas','Leads'],
-      datasets: [{ data: [props.stats.vehicles, props.stats.campaigns, props.stats.leads], backgroundColor:['#0d6efd','#198754','#dc3545'] }]
-    },
-    options: { responsive:true, maintainAspectRatio:false }
-  })
-})
+defineProps({ stats: Object })
 </script>

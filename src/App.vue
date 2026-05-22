@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#/">Motorsight</a>
+        <router-link class="navbar-brand" to="/">🏎️ Motorsight - Renault</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,9 +22,10 @@
 </template>
 
 <script setup>
-// Composición simple: App contiene el layout y router-view
+// Layout principal con router
 </script>
 
 <style>
 body { background: #f8f9fa; }
+.navbar-brand { font-weight: bold; font-size: 1.3rem; }
 </style>

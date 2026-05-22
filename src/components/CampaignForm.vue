@@ -1,37 +1,46 @@
 <template>
-  <form @submit.prevent="submit">
+  <div>
     <div class="mb-2">
-      <label class="form-label">Nombre</label>
-      <input v-model="local.name" class="form-control" required />
+      <input v-model="form.name" class="form-control" placeholder="Nombre de la campaña" required />
     </div>
-    <div class="row g-2">
-      <div class="col">
-        <label class="form-label">Presupuesto</label>
-        <input type="number" v-model.number="local.budget" class="form-control" />
-      </div>
-      <div class="col">
-        <label class="form-label">Estado</label>
-        <select v-model="local.status" class="form-select">
-          <option value="active">Activa</option>
-          <option value="paused">Pausada</option>
-          <option value="finished">Finalizada</option>
-        </select>
-      </div>
+    <div class="mb-2">
+      <input v-model.number="form.budget" type="number" class="form-control" placeholder="Presupuesto" required />
     </div>
-    <div class="mt-3 d-flex gap-2">
-      <button class="btn btn-primary" type="submit">Guardar</button>
-      <button type="button" class="btn btn-outline-secondary" @click="$emit('cancel')">Cancelar</button>
+    <div class="mb-2">
+      <input v-model="form.startDate" type="date" class="form-control" required />
     </div>
-  </form>
+    <div class="mb-2">
+      <input v-model="form.endDate" type="date" class="form-control" required />
+    </div>
+    <div class="mb-2">
+      <select v-model="form.status" class="form-select">
+        <option value="active">Activa</option>
+        <option value="paused">Pausada</option>
+      </select>
+    </div>
+    <div class="d-flex gap-2">
+      <button @click="save" class="btn btn-primary">Guardar</button>
+      <button @click="cancel" class="btn btn-secondary">Cancelar</button>
+    </div>
+  </div>
 </template>
 
 <script setup>
-import { reactive, toRefs } from 'vue'
+import { ref, watch } from 'vue'
 const props = defineProps({ modelValue: Object })
-const emits = defineEmits(['save','cancel'])
+const emits = defineEmits(['save', 'cancel'])
 
-const local = reactive({ id: null, name:'', budget:0, status:'active' })
-if(props.modelValue) Object.assign(local, props.modelValue)
+const form = ref({ name: '', budget: 0, startDate: '', endDate: '', status: 'active' })
 
-function submit(){ emits('save', { ...local }) }
+watch(() => props.modelValue, (val) => {
+  if (val) form.value = { ...val }
+}, { immediate: true })
+
+function save() {
+  emits('save', { ...form.value, id: form.value.id || Date.now() })
+}
+
+function cancel() {
+  emits('cancel')
+}
 </script>
